@@ -1,0 +1,22 @@
+# Node artifacts
+Team-6-react-frontend/node_modules/
+Team-6-react-frontend/dist/
+Team-6-react-frontend/dist-ssr/
+Team-6-react-frontend/.vite/
+Team-6-react-frontend/.turbo/
+Team-6-react-frontend/.env
+Team-6-react-frontend/npm-debug.log*
+Team-6-react-frontend/pnpm-debug.log*
+Team-6-react-frontend/yarn-debug.log*
+Team-6-react-frontend/yarn-error.log*
+
+# Python/virtualenv (if created at this level)
+venv/
+.venv/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
