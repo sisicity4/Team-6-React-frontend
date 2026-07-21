@@ -1,16 +1,35 @@
-# React + Vite
+## セットアップ手順
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. このディレクトリへ移動
+   `cd Team-6-react-frontend/Team-6-react-frontend`
+2. 依存関係をインストール
+   `npm install`
 
-Currently, two official plugins are available:
+## 開発サーバー
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `npm run dev` — Viteの開発サーバーを起動し、`http://localhost:5173`（またはログに表示されたURL）をブラウザで開いて動作確認します。
 
-## React Compiler
+## その他のスクリプト
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `npm run build` — 本番ビルドを生成
+- `npm run preview` — ビルド成果物をローカル静的サーバーで確認
+- `npm run lint` — ESLintでコード品質をチェック
 
-## Expanding the ESLint configuration
+※ 上記のコマンドはすべて `Team-6-react-frontend/Team-6-react-frontend` の中で実行してください。
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## フォルダーファイル構成と役割
+
+- `src/pages/` — 各画面（Home/Reason Input/Battle/Reflectionなど）のコンポーネント
+- `src/components/` — BottomNavや共通のCard、StatusGaugeなどの汎用UI
+- `src/components/ui/` — 再利用性の高いUI部品（カード枠・ゲージなど）
+- `src/data/` — 理由リストやナビゲーションデータのモック定義
+- `src/api/` — 将来的なDjango API呼び出しラッパー
+- `src/assets/` — SVGや画像
+- `src/types.ts` — Screen／Reason／PetStatusなどの型定義
+
+## 開発時のポイント
+
+1. `npm run dev` でサーバーを立ち上げ、画面下部の `現在 screen: ...` インジケーターを見ながら操作すれば、どの画面に遷移したかが視覚的に追えます。
+2. `src/App.tsx` の `screen` による制御（`HomePage` → `ReasonInputPage` → `CounterActionPage` → `ReflectionPage`）を活用し、必要に応じて新しいscreenを追加。
+3. Django APIとの連携は `src/api/` にfetchヘルパーを作って置き、`src/data/` のモックを差し替えていく形で進めます。
+4. 認証トークンや履歴はlocalStorageまたはcontextを使って保持する設計です。
